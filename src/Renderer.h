@@ -85,15 +85,6 @@ namespace fpgfx
     /// @note The triangle winding order needs to be CCW or the triangle won't be visible.
     void DrawTriangle(RenderContext *pCtx, Vertex const &V0, Vertex const &V1, Vertex const &V2);
 
-    void DrawTriangleInterp(
-        RenderContext* pCtx, 
-        Vec4f const& V0, 
-        Vec4f const& V1, 
-        Vec4f const& V2,
-        Vec3f const& C0,
-        Vec3f const& C1,
-        Vec3f const& C2);
-
     /// @brief Draws a line from start to the end with the given color.
     /// @param Start Start point of the line
     /// @param End End point of the line

@@ -229,8 +229,6 @@ namespace fpgfx
         }
     }
 
-    void DrawTriangle();
-
     void DrawTriangle(RenderContext *pCtx, Vec2f const &V0, Vec2f const &V1, Vec2f const &V2, u32 Color)
     {
         BoundingBox BB = ComputeMinBoundingBox(V0, V1, V2);
@@ -242,7 +240,7 @@ namespace fpgfx
             {
                 if (IsInside(V0, V1, V2, {x, y}))
                 {
-                    PutPixel(pCtx, {x, y}, Color);
+                    PutPixel(pCtx, {x, COLORBUFFER_HEIGHT - y}, Color);
                 }
             }
         }

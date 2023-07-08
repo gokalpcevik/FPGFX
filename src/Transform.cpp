@@ -11,13 +11,13 @@ namespace fpgfx
         // TODO: this can be optimized a lot more.
         Projective3f proj(Mat4f::Zero());
         Mat4f &mat = proj.matrix();
-        mat.coeffRef(0, 0) = 2.0f * NearZ / (dim.Right - dim.Left);
-        mat.coeffRef(1, 1) = 2.0f * NearZ / (dim.Top - dim.Bottom);
-        mat.coeffRef(0, 2) = (dim.Right + dim.Left) / (dim.Right - dim.Left);
-        mat.coeffRef(1, 2) = (dim.Top + dim.Bottom) / (dim.Top - dim.Bottom);
-        mat.coeffRef(2, 2) = -(FarZ + NearZ) / (FarZ - NearZ);
-        mat.coeffRef(3, 2) = -1.0f;
-        mat.coeffRef(2, 3) = 2.0f * FarZ * NearZ / (FarZ - NearZ);
+        mat(0, 0) = 2.0f * NearZ / (dim.Right - dim.Left);
+        mat(1, 1) = 2.0f * NearZ / (dim.Top - dim.Bottom);
+        mat(0, 2) = (dim.Right + dim.Left) / (dim.Right - dim.Left);
+        mat(1, 2) = (dim.Top + dim.Bottom) / (dim.Top - dim.Bottom);
+        mat(2, 2) = -(FarZ + NearZ) / (FarZ - NearZ);
+        mat(3, 2) = -1.0f;
+        mat(2, 3) = -2.0f * FarZ * NearZ / (FarZ - NearZ);
 
         return proj;
     }
@@ -25,7 +25,7 @@ namespace fpgfx
     CanvasDim CalculateCanvasDim(f32 FOVY_Half, f32 AspectRatio, f32 NearZ)
     {
         CanvasDim dim;
-        f32 CanvasHeight = std::tanf(FOVY_Half) * NearZ;
+        f32 CanvasHeight = 2.0f * std::tanf(FOVY_Half) * NearZ;
         f32 CanvasWidth = CanvasHeight * AspectRatio;
 
         dim.Top = CanvasHeight / 2.0f;

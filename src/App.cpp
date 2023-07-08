@@ -114,7 +114,7 @@ namespace fpgfx
     }
 
     Affine3f ViewMatrix = CameraLookAtRH({+0.0f,+5.0f,+5.0f},Vec3f::Zero()).inverse();
-    Projective3f ProjectionMatrix = Perspective(0.1f,100.0f,(f32)M_PI / 4.0f, ASPECT_RATIO);
+    Projective3f ProjectionMatrix = Perspective(1.0f,100.0f,(f32)M_PI / 4.0f, ASPECT_RATIO);
 
     void OnRender(RenderContext *pCtx)
     {
@@ -171,9 +171,6 @@ namespace fpgfx
                 u32 Color = RGBA(RGB[0],RGB[1],RGB[2]); // A=0xFF
 
                 DrawTriangle(pCtx,P0_raster,P1_raster,P2_raster,Color);
-                //DrawLine(pCtx,P0_raster,P1_raster);
-                //DrawLine(pCtx,P1_raster,P2_raster);
-                //DrawLine(pCtx,P2_raster,P0_raster);
             }
         }
     }
